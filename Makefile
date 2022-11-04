@@ -7,8 +7,11 @@ CC = g++
 CFLAGS = -g -Wall
 
 # build target
-main: main.o
-	$(CC) $(CFLAGS) -o main main.o
+main: main.o Grid.o
+	$(CC) $(CFLAGS) -o main main.o Grid.o
 
-main.o: ./src/main.cpp $(ARG1)
+main.o: ./src/main.cpp ./src/Grid.h
 	$(CC) $(CFLAGS) -c ./src/main.cpp
+
+Grid.o: ./src/Grid.h
+	$(CC) $(CFLAGS) -c ./src/Grid.cpp
