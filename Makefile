@@ -15,3 +15,6 @@ main.o: ./src/main.cpp ./src/Grid.h
 
 Grid.o: ./src/Grid.h
 	$(CC) $(CFLAGS) -c ./src/Grid.cpp
+
+clean:
+	rm -f *.o main
