@@ -1,3 +1,5 @@
+#include <map>
+#include <string>
 #include "Node.h"
 
 class Grid {
@@ -5,14 +7,22 @@ private:
     char *grid;
     int target[2];
     int start[2];
-    Node head;
+    int counter;
+    Node* head;
+    Node* startNode;
 
+    void resetPath();
+    Node* DFS(Node* node, std::map<int, bool> visited);
+    Node* BFS(Node* node, std::map<int, bool> visited);
+    Node* dijkstra(Node* node);
 public:
     int size;
 
     Grid(int _size);
-    void createGrid();
-    void getGrid();
-    void setStart(int xPos, int yPos);
-    void setTarget(int xPos, int yPos);
+    Grid(std::string fileName);
+    void createGrid(char* nodeInit = NULL);
+    void getGrid(bool resetPath = false);
+    void setValue(int xPos, int yPos, char value);
+    void pathfind(int mode);
+    int getSize(int _size);
 };
